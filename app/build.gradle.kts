@@ -34,6 +34,10 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+    viewBinding{
+        enable = true
+    }
 }
 
 dependencies {
@@ -47,4 +51,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.koushikdutta.ion:ion:2.+")
     implementation("com.google.code.gson:gson:2.10")
+
 }
