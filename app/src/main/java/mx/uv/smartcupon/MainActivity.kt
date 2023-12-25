@@ -11,21 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-    }
-
-
-    fun btnIniciarSesion(view: View): Unit{
-
-        var etCorreo = findViewById<EditText>(R.id.edtCorreo)
-        var etPassword = findViewById<EditText>(R.id.etpPassword)
-
-        var mostrarMensaje = Toast.makeText(this, "Hola "+ etCorreo.text, Toast.LENGTH_LONG).show()
-
-    }
-
-    fun btnRegistrar(view: View): Unit{
-        var mostrarMensaje = Toast.makeText(this, "Vamos a registrarte", Toast.LENGTH_LONG).show()
     }
 
 

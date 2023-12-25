@@ -1,14 +1,13 @@
 package mx.uv.smartcupon.modelo.poko
 
-data class Cliente(
-    private var id: Int? = null,
-    private var nombre: String? = null,
-    private var apellidoPaterno: String? = null,
-    private var apellidoMaterno: String? = null,
-    private var telefono: String? = null,
-    private var email: String? = null,
-    private var direccion: Int? = null,
-    private var fechaNacimiento: String? = null,
-    private var password: String? = null
-) {
+class Cliente{
+    var id: Int? = null
+    var nombre: String? = null
+    var apellidoPaterno: String? = null
+    var apellidoMaterno: String? = null
+    var telefono: String? = null
+    var email: String? = null
+    var direccion: Int? = null
+    var fechaNacimiento: String? = null
+    var password: String? = null
 }
