@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">Smartcupon</string>
-    <string name="abrir_nav">Abrir Navegation Drawer</string>
-    <string name="cerrar_nav">Cerrar Navegation Drawer</string>
 </resources>

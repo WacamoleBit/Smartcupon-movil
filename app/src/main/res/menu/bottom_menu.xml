@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itm_boton_inicio"
+        android:icon="@drawable/icons8_home_50"
+        android:iconTint="@color/white"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/itm_boton_categoria"
+        android:icon="@drawable/icons8_main_category_60"
+
+        android:title="Categoria" />
+
+    <item
+        android:id="@+id/itm_boton_promociones"
+        android:icon="@drawable/icons8_gift_60"
+        android:iconTint="@color/white"
+        android:title="Promociones" />
+
+    <item
+        android:id="@+id/itm_boton_configuracion"
+        android:icon="@drawable/icons8_user_menu_male_60"
+        android:iconTint="@color/white"
+        android:title="Perfil" />
+</menu>

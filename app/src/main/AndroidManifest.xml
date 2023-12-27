@@ -12,27 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartcupon"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PromocionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoriaActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Agrega la actividad RegistroClienteActivity aquí -->
+        </activity> <!-- Agrega la actividad RegistroClienteActivity aquí -->
         <activity
             android:name=".RegistroClienteActivity"
-            android:exported="false"    />
-
-        <activity android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
             android:exported="false"
-            android:theme="@style/Theme.Smartcupon">
-
-        </activity>
-
+            android:theme="@style/Theme.Smartcupon" />
     </application>
 
 </manifest>
