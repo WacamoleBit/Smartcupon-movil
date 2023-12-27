@@ -19,7 +19,7 @@ import mx.uv.smartcupon.modelo.util.Constantes
 class RegistroClienteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistroClienteBinding
-
+    private lateinit var cliente: Cliente
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_cliente)
@@ -27,9 +27,20 @@ class RegistroClienteActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        var cliente = Cliente()
+        binding.btnRegistrar.setOnClickListener {
+            if(!validarCamposRegistro()){
+                registraCliente()
+            }
+
+        }
+    }
+
+    fun registraCliente(){
+
+        cliente = Cliente()
         var direccion = Direccion()
         var datosCliente = DatosCliente()
+
 
         cliente.nombre = binding.edtNombre.text.toString()
         cliente.apellidoPaterno = binding.edtApellidoP.text.toString()
@@ -41,59 +52,49 @@ class RegistroClienteActivity : AppCompatActivity() {
         direccion.calle = binding.edtCalle.text.toString()
         direccion.numero = binding.edtNumero.text.toString().toInt()
 
+        datosCliente.cliente = cliente
+        datosCliente.direccion = direccion
 
+        realizarPeticionRegistro(datosCliente)
 
-        binding.btnRegistrar.setOnClickListener {
-            if(!validarCamposRegistro(cliente.nombre!!, cliente.apellidoPaterno!!, cliente.apellidoMaterno!!, cliente.telefono!!, cliente.fechaNacimiento!!, cliente.email!!,
-                cliente.password!!,direccion.calle!!, direccion.numero!!)){
-                 datosCliente.cliente = cliente
-                 datosCliente.direccion = direccion
-
-                Toast.makeText(this@RegistroClienteActivity, direccion.numero.toString(), Toast.LENGTH_LONG).show()
-            }
-
-            val intent = Intent(this@RegistroClienteActivity,HomeActivity::class.java)
-            startActivity(intent)
-        }
     }
+    fun validarCamposRegistro(): Boolean{
 
-    fun validarCamposRegistro(nombre:String, apellidoPaterno:String, apellidoMaterno:String,
-                              telefono:String, fechaNacimiento:String, email:String, password:String,
-                              calle:String, numero:Int): Boolean{
-        if (nombre.isEmpty()){
+        if (binding.edtNombre.text.isEmpty()){
             binding.edtNombre.error = "Campo obligatorio"
             return true
         }
-        if(apellidoPaterno.isEmpty()){
+        if(binding.edtApellidoP.text.isEmpty()){
             binding.edtApellidoP.error = "Campo obligatorio"
             return true
         }
-        if(apellidoMaterno.isEmpty()){
+        if(binding.edtApellidoM.text.isEmpty()){
             binding.edtApellidoM.error = "Campo obligatorio"
             return true
         }
-        if(telefono.isEmpty()){
+        if(binding.edtNumTelefono.text.isEmpty()){
             binding.edtNumTelefono.error = "Campo obligatorio"
             return true
         }
-        if(fechaNacimiento.isEmpty()){
+        if(binding.edtFechaNacimiento.text.isEmpty()){
             binding.edtFechaNacimiento.error = "Campo obligatorio"
             return true
         }
-        if(email.isEmpty()){
+        if(binding.edtEmail.text.isEmpty()){
             binding.edtEmail.error = "Campo obligatorio"
             return true
         }
-        if(password.isEmpty()){
+        if(binding.edtPassword.text.isEmpty()){
             binding.edtPassword.error = "Campo obligatorio"
             return true
         }
-        if(calle.isEmpty()){
-            binding.edtNumero.error = "Campo obligatorio"
+        if(binding.edtCalle.text.isEmpty()){
+            binding.edtCalle.error = "Campo obligatorio"
             return true
         }
-        if(numero > 0){
-            binding.edtNombre.error = "Campo obligatorio"
+
+        if(binding.edtNumero.text.isEmpty()){
+            binding.edtNumero.error = "Campo obligatorio"
             return true
         }
 
@@ -120,15 +121,19 @@ class RegistroClienteActivity : AppCompatActivity() {
         val gson = Gson()
         val respuesta = gson.fromJson(json,Mensaje::class.java)
         if (!respuesta.error){
-            Toast.makeText(this@RegistroClienteActivity, respuesta.mensjae, Toast.LENGTH_SHORT).show()
-            
+            Toast.makeText(this@RegistroClienteActivity, "Registro exitoso", Toast.LENGTH_SHORT).show()
+            irPantallaHome(cliente)
         }else{
             Toast.makeText(this@RegistroClienteActivity, respuesta.mensjae, Toast.LENGTH_SHORT).show()
         }
     }
 
     fun irPantallaHome(cliente: Cliente){
-
+        val intent = Intent(this@RegistroClienteActivity,HomeActivity::class.java)
+        val gson = Gson()
+        var cadenaJson = gson.toJson(cliente)
+        intent.putExtra("cliente", cadenaJson)
+        startActivity(intent)
     }
 
 }

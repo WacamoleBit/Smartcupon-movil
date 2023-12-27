@@ -26,8 +26,12 @@
         <activity
             android:name=".RegistroClienteActivity"
             android:exported="false"    />
+
         <activity android:name=".HomeActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.Smartcupon">
+
+        </activity>
 
     </application>
 
