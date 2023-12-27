@@ -36,25 +36,31 @@
 
     <EditText
         android:id="@+id/edtNombre"
-        android:layout_width="321dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Nombre"
         android:padding="10sp"
         android:textColor="@color/black" />
     <LinearLayout
-        android:layout_width="322dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        >
 
         <EditText
             android:id="@+id/edtApellidoP"
-            android:layout_width="161dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/custom_edittext"
             android:drawablePadding="8dp"
             android:hint="Apellido Paterno"
@@ -63,9 +69,9 @@
 
         <EditText
             android:id="@+id/edtApellidoM"
-            android:layout_width="161dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/custom_edittext"
             android:drawablePadding="8dp"
             android:hint="Apellido Materno"
@@ -77,61 +83,71 @@
 
     <EditText
         android:id="@+id/edtNumTelefono"
-        android:layout_width="321dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Numero de telefono"
         android:padding="10sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:inputType="number"/>
 
     <EditText
-        android:id="@+id/edtFechaNaciemiento"
-        android:layout_width="321dp"
+
+        android:id="@+id/edtFechaNacimiento"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Fecha de Nacimiento"
         android:padding="10sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:inputType="datetime"
+        />
 
     <EditText
         android:id="@+id/edtEmail"
-        android:layout_width="321dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Correo electronico"
         android:padding="10sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:inputType="textEmailAddress"
+        />
 
     <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="321dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Contraseña"
         android:padding="10sp"
-        android:textColor="@color/black" />
-    <LinearLayout
-        android:layout_width="322dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:textColor="@color/black"
+        android:inputType="textPassword"/>
 
-        <EditText
+
+    <EditText
             android:id="@+id/edtCalle"
-            android:layout_width="161dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/custom_edittext"
             android:drawablePadding="8dp"
             android:hint="Calle"
@@ -140,25 +156,31 @@
 
         <EditText
             android:id="@+id/edtNumero"
-            android:layout_width="161dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/custom_edittext"
             android:drawablePadding="8dp"
             android:hint="Numero"
             android:padding="10sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:inputType="number"/>
 
-    </LinearLayout>
     <Button
         android:id="@+id/btnRegistrar"
-        android:layout_width="150dp"
-        android:layout_height="46dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="Registrar"
-        android:textColor="@color/white"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
         android:gravity="center"
-        android:layout_gravity="center_horizontal" />
+        android:text="Registrar"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
 
 

@@ -50,7 +50,9 @@
                 android:drawablePadding="8dp"
                 android:hint="Correo"
                 android:padding="10sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:inputType="textEmailAddress"
+                />
 
             <EditText
                 android:id="@+id/etpPassword"
