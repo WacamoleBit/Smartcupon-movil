@@ -124,7 +124,7 @@ class RegistroClienteActivity : AppCompatActivity() {
             Toast.makeText(this@RegistroClienteActivity, "Registro exitoso", Toast.LENGTH_SHORT).show()
             irPantallaHome(cliente)
         }else{
-            Toast.makeText(this@RegistroClienteActivity, respuesta.mensjae, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@RegistroClienteActivity, respuesta.mensaje, Toast.LENGTH_SHORT).show()
         }
     }
 

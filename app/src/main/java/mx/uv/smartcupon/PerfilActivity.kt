@@ -5,13 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.gson.Gson
+import com.koushikdutta.ion.Ion
 import mx.uv.smartcupon.databinding.ActivityPerfilBinding
 import mx.uv.smartcupon.modelo.poko.Cliente
+import mx.uv.smartcupon.modelo.poko.DatosCliente
+import mx.uv.smartcupon.modelo.poko.Direccion
+import mx.uv.smartcupon.modelo.util.Constantes
 
 class PerfilActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityPerfilBinding
     private lateinit var cliente: Cliente
+    private lateinit var direccion: Direccion
+    private lateinit var datosCliente: DatosCliente
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
@@ -19,9 +25,20 @@ class PerfilActivity : AppCompatActivity() {
         setContentView(view)
 
         var cadenaJson = intent.getStringExtra("cliente")
+
         if(cadenaJson != null){
             serializarCliente(cadenaJson)
-            Toast.makeText(this@PerfilActivity, cliente.email, Toast.LENGTH_SHORT).show()
+            if (cliente.direccion!=null){
+                obtenerDireccion(cliente.direccion!!)
+            }
+        }
+
+        binding.btnInformacionPersonal.setOnClickListener {
+            irPantallaInformacionGeneral(datosCliente)
+            }
+
+        binding.btnEditarInformacion.setOnClickListener {
+            irPantallaFormularioCliente(datosCliente)
         }
 
         val botonNavegacionVista = binding.botonNavegacionVista
@@ -72,8 +89,54 @@ class PerfilActivity : AppCompatActivity() {
         }
     }
 
+
+    fun obtenerDireccion(idDireccion: Int){
+
+        Ion.with(this@PerfilActivity)
+            .load("GET","${Constantes.URL_WS}clientes/obtenerDireccion/${idDireccion}")
+            .asString()
+            .setCallback { e, result ->
+                if(e==null && result!= null){
+
+                    serializarDatos(result)
+                }else{
+                    Toast.makeText(this@PerfilActivity, "Error al obtener la informacion del cliente", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+    }
+
+    fun serializarDatos(json: String ){
+        if(!json.isEmpty()){
+            val gson = Gson()
+            direccion = gson.fromJson(json, Direccion::class.java)
+
+            datosCliente.direccion = direccion
+        }
+
+    }
     fun serializarCliente(cadenaJson: String) {
         val gson = Gson()
         cliente = gson.fromJson(cadenaJson, Cliente::class.java)
+        direccion = Direccion()
+        datosCliente = DatosCliente()
+
+        datosCliente.cliente = cliente
     }
+
+    fun irPantallaFormularioCliente(datosCliente: DatosCliente) {
+        val intent = Intent(this@PerfilActivity, FormularioClienteActivity::class.java)
+        val gson = Gson()
+        var cadenaJson = gson.toJson(datosCliente)
+        intent.putExtra("datos", cadenaJson)
+        startActivity(intent)
+    }
+    fun irPantallaInformacionGeneral(datosCliente: DatosCliente){
+        val intent = Intent(this@PerfilActivity, InformacionActivity::class.java)
+        val gson = Gson()
+        var cadenaJson = gson.toJson(datosCliente)
+        intent.putExtra("datos",cadenaJson)
+        startActivity(intent)
+    }
+
 }

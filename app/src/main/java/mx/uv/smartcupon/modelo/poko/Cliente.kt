@@ -2,7 +2,7 @@ package mx.uv.smartcupon.modelo.poko
 
 class Cliente{
 
-    var id: Int? = 0
+    var idCliente: Int? = 0
     var nombre: String? = ""
     var apellidoPaterno: String? = ""
     var apellidoMaterno: String? = ""

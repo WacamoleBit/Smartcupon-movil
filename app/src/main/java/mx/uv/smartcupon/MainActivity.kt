@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun realizarPeticionLogin(cliente: Cliente) {
+        Ion.getDefault(this@MainActivity).conscryptMiddleware.enable(false)
 
         Ion.with(this@MainActivity)
             .load("POST", "${Constantes.URL_WS}autenticacion/inicioSesionCliente")
