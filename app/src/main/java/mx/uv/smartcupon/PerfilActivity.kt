@@ -16,7 +16,6 @@ class PerfilActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityPerfilBinding
     private lateinit var cliente: Cliente
-    private lateinit var direccion: Direccion
     private lateinit var datosCliente: DatosCliente
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +27,21 @@ class PerfilActivity : AppCompatActivity() {
 
         if(cadenaJson != null){
             serializarCliente(cadenaJson)
-            if (cliente.direccion!=null){
-                obtenerDireccion(cliente.direccion!!)
-            }
+            peticionCargarInformacion()
         }
 
         binding.btnInformacionPersonal.setOnClickListener {
+            peticionCargarInformacion()
             irPantallaInformacionGeneral(datosCliente)
             }
 
         binding.btnEditarInformacion.setOnClickListener {
+            peticionCargarInformacion()
             irPantallaFormularioCliente(datosCliente)
+        }
+
+        binding.btnSalir.setOnClickListener {
+            finish()
         }
 
         val botonNavegacionVista = binding.botonNavegacionVista
@@ -90,38 +93,29 @@ class PerfilActivity : AppCompatActivity() {
     }
 
 
-    fun obtenerDireccion(idDireccion: Int){
-
+    fun peticionCargarInformacion(){
         Ion.with(this@PerfilActivity)
-            .load("GET","${Constantes.URL_WS}clientes/obtenerDireccion/${idDireccion}")
+            .load("GET", "${Constantes.URL_WS}clientes/obtenerDatos/${cliente.idCliente}")
+            .setHeader("Content-Type","application/json")
             .asString()
             .setCallback { e, result ->
-                if(e==null && result!= null){
-
-                    serializarDatos(result)
+                if (e==null && result != null){
+                    serializarRespuesta(result)
                 }else{
-                    Toast.makeText(this@PerfilActivity, "Error al obtener la informacion del cliente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PerfilActivity, "Error en la peticion", Toast.LENGTH_SHORT).show()
                 }
-
             }
-    }
-
-    fun serializarDatos(json: String ){
-        if(!json.isEmpty()){
-            val gson = Gson()
-            direccion = gson.fromJson(json, Direccion::class.java)
-
-            datosCliente.direccion = direccion
-        }
 
     }
+
+    fun serializarRespuesta(json: String) {
+        val gson = Gson()
+        datosCliente = gson.fromJson(json, DatosCliente::class.java)
+    }
+
     fun serializarCliente(cadenaJson: String) {
         val gson = Gson()
         cliente = gson.fromJson(cadenaJson, Cliente::class.java)
-        direccion = Direccion()
-        datosCliente = DatosCliente()
-
-        datosCliente.cliente = cliente
     }
 
     fun irPantallaFormularioCliente(datosCliente: DatosCliente) {

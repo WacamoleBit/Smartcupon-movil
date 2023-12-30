@@ -4,14 +4,19 @@ import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.gson.Gson
+import com.koushikdutta.ion.Ion
 import mx.uv.smartcupon.databinding.ActivityHomeBinding
 import mx.uv.smartcupon.modelo.poko.Cliente
+import mx.uv.smartcupon.modelo.poko.DatosCliente
+import mx.uv.smartcupon.modelo.util.Constantes
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var cliente: Cliente
+    private lateinit var datosCliente: DatosCliente
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -21,7 +26,8 @@ class HomeActivity : AppCompatActivity() {
         var cadenaJson = intent.getStringExtra("cliente")
         if(cadenaJson != null){
             serializarCliente(cadenaJson)
-            cargarDatosCliente()
+            peticionCargarInformacion()
+
         }
 
         val botonNavegacionVista = binding.botonNavegacionVista
@@ -75,10 +81,30 @@ class HomeActivity : AppCompatActivity() {
         cliente = gson.fromJson(cadenaJson, Cliente::class.java)
     }
 
-    fun deserializar(cliente: Cliente){
-    }
+
 
     fun cargarDatosCliente(){
-        binding.tvCliente.setText("'${cliente.nombre} ${cliente.apellidoPaterno} ${cliente.apellidoMaterno}'")
+        binding.tvCliente.setText("'${datosCliente.cliente!!.nombre} ${datosCliente.cliente!!.apellidoPaterno} ${datosCliente.cliente!!.apellidoMaterno}'")
+    }
+
+    fun peticionCargarInformacion(){
+        Ion.with(this@HomeActivity)
+            .load("GET", "${Constantes.URL_WS}clientes/obtenerDatos/${cliente.idCliente}")
+            .setHeader("Content-Type","application/json")
+            .asString()
+            .setCallback { e, result ->
+                if (e==null && result != null){
+                    serializarRespuesta(result)
+                }else{
+                    Toast.makeText(this@HomeActivity, "Error en la peticion", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+    }
+
+    fun serializarRespuesta(json: String) {
+        val gson = Gson()
+        datosCliente = gson.fromJson(json, DatosCliente::class.java)
+        cargarDatosCliente()
     }
 }

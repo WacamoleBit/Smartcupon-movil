@@ -11,24 +11,23 @@ import mx.uv.smartcupon.databinding.ActivityMainBinding
 import mx.uv.smartcupon.modelo.poko.Cliente
 import mx.uv.smartcupon.modelo.poko.RespuestaLogin
 import mx.uv.smartcupon.modelo.util.Constantes
+import mx.uv.smartcupon.modelo.util.Validador
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var bindig: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindig = ActivityMainBinding.inflate(layoutInflater)
-        val view = bindig.root
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(view)
 
         var cliente = Cliente()
 
-        bindig.btnIniciarSesion.setOnClickListener {
+        binding.btnIniciarSesion.setOnClickListener {
 
-            var email = bindig.edtCorreo.text.toString()
-            var password = bindig.etpPassword.text.toString()
-
-
+            var email = binding.etEmail.text.toString()
+            var password = binding.etpPassword.text.toString()
 
             if(!validarCamposLogin(email, password)){
                 cliente.email = email.toString()
@@ -42,11 +41,14 @@ class MainActivity : AppCompatActivity() {
 
     fun validarCamposLogin(email: String, password: String) : Boolean {
         if (email.isEmpty()){
-            bindig.edtCorreo.error = "Correo electrónico obligatorio"
+            binding.etEmail.error = "Correo electrónico obligatorio"
+            return true
+        }else if(!Validador.esCorreoElectronicoValido(binding.etEmail.text.trim().toString())){
+            binding.etEmail.error = "Correo no valido"
             return true
         }
         if(password.isEmpty()){
-            bindig.etpPassword.error = "Contraseña obligatoria"
+            binding.etpPassword.error = "Contraseña obligatoria"
             return true
         }
 

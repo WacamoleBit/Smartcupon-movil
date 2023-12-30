@@ -1,8 +1,8 @@
 package mx.uv.smartcupon.modelo.poko
 class Direccion{
-    var idDireccion:Int? = 0
-    var calle:String? = ""
-    var numero: Int? = 0
+    var idDireccion:Int? = null
+    var calle:String? = null
+    var numero: Int? = null
     var colonia: String? = ""
     var codigoPostal: String? = ""
     var ciudad: Int? = 0
