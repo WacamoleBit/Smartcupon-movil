@@ -8,13 +8,7 @@
     android:orientation="vertical"
     tools:context=".CategoriaActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Categoria"
-        android:textSize="36sp"
-        android:textColor="@color/lavender"
-        android:layout_centerInParent="true"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

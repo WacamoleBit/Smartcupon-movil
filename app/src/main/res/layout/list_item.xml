@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/siv_imagen"
+            android:src="@drawable/icons8_user_menu_male_60"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:shapeAppearanceOverlay="@style/roundImage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/siv_imagen">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:id="@+id/tv_nombre"
+                android:text="Nombre de la Promoción"
+                android:textColor="@color/lavender"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:id="@+id/tv_empresa"
+                android:text="Empresa"
+                android:textColor="@color/lavender"
+                android:textSize="16dp"
+                android:textStyle="italic"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:id="@+id/tv_tipo_descuento"
+                android:text="Tipo: Descuento"
+                android:textColor="@color/lavender"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                android:id="@+id/tv_valor"
+                android:text="Valor: $10"
+                android:textColor="@color/lavender"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                android:id="@+id/tv_cupones"
+                android:text="Cupones:"
+                android:textColor="@color/lavender"
+                android:layout_toEndOf="@+id/tv_valor"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:id="@+id/tv_vigencia"
+                    android:text="Vigencia: 31/12/2023"
+                    android:textColor="@color/lavender"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
