@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoriaPromocionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgbt_regresar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="Regresar"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:src="@drawable/icons8_back_50"
+                app:tint="@color/lavender" />
+
+            <TextView
+                android:id="@+id/tv_categoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="@color/lavender"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"/>
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_promociones"
+            android:scrollbars="vertical"
+            android:layout_marginTop="5dp"
+            android:divider="@android:color/transparent"
+            tools:listitem="@layout/list_item"
+            android:dividerHeight="10.0sp"
+            />
+
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No hay promociones"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/lavender"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

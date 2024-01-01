@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Smartcupon"
         tools:targetApi="31">
         <activity
+            android:name=".CategoriaPromocionActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetallePromocionActivity"
             android:exported="false" />
         <activity

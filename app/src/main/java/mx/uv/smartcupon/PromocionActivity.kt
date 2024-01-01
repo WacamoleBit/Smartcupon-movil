@@ -108,15 +108,15 @@ class PromocionActivity : AppCompatActivity() {
                             }
                         }
                         binding.recyclerPromociones.adapter!!.notifyDataSetChanged()
-                        if (listaBusqueda == null || listaBusqueda.size<1){
+                        if (listaBusqueda == null || listaBusqueda.size<0){
                             binding.tvDefault.visibility = View.VISIBLE
                         }else{
                             binding.tvDefault.visibility = View.GONE
                         }
                 }else{
-
                     listaBusqueda.clear()
                     listaBusqueda.addAll(promociones)
+                    adaptador = PromocionesAdapter(listaBusqueda)
                     mostrarInformacionPromociones(listaBusqueda)
                     binding.recyclerPromociones.adapter!!.notifyDataSetChanged()
                 }
@@ -167,8 +167,6 @@ class PromocionActivity : AppCompatActivity() {
                 intent.putExtra("detallePromocion", cadenaJson)
                 startActivity(intent)
             }
-
-
         }
     }
 

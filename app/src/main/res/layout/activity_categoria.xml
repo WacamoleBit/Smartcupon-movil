@@ -8,7 +8,164 @@
     android:orientation="vertical"
     tools:context=".CategoriaActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categorías"
+            android:textSize="30dp"
+            android:textColor="@color/lavender"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lavender"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_cine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_cine"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:text="Cine" />
+
+            <Button
+                android:id="@+id/btn_comida"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_comida"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:text="Comida" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ropa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_ropa"
+                android:gravity="center"
+                android:text="Ropa"
+                android:textSize="18dp"
+                />
+
+            <Button
+                android:id="@+id/btn_limpieza"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_limpieza"
+                android:gravity="center"
+                android:text="Limpieza"
+                android:textSize="18dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_calzado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_calzado"
+                android:gravity="center"
+                android:text="Calzado"
+                />
+
+
+            <Button
+                android:id="@+id/btn_aerolinea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_aerolinea"
+                android:gravity="center"
+                android:text="Aerolínea"
+                android:textSize="18dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_videojuegos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_videogames"
+                android:gravity="center"
+                android:text="Video Juegos" />
+
+            <Button
+                android:id="@+id/btn_tecnologia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_laptop"
+                android:gravity="center"
+                android:text="Tecnología" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -26,7 +183,5 @@
         app:itemIconTint="@drawable/item_selector"
         app:itemRippleColor="@android:color/transparent"
         app:labelVisibilityMode="unlabeled"/>
-
-
 
 </RelativeLayout>
