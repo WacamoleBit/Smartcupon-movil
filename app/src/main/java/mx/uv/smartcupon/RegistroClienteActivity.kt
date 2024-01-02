@@ -3,6 +3,7 @@ package mx.uv.smartcupon
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -21,7 +22,6 @@ import mx.uv.smartcupon.modelo.util.Validador
 class RegistroClienteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistroClienteBinding
-    private lateinit var cliente: Cliente
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_cliente)
@@ -29,11 +29,17 @@ class RegistroClienteActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.imgbtRegresar.setOnClickListener {
+            val intent = Intent(this@RegistroClienteActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.btnRegistrar.setOnClickListener {
             val builder = AlertDialog.Builder(this)
 
-            builder.setTitle("Editar")
-            builder.setMessage("¿Estás seguro de editar la información?")
+            builder.setTitle("Registrar")
+            builder.setMessage("¿La información ingresada es la correcta?")
             builder.setPositiveButton("Confirmar") { dialog, which ->
                 if(!validarCamposRegistro()){
                     registraCliente()
@@ -49,10 +55,9 @@ class RegistroClienteActivity : AppCompatActivity() {
 
     fun registraCliente(){
 
-        cliente = Cliente()
+        var cliente = Cliente()
         var direccion = Direccion()
         var datosCliente = DatosCliente()
-
 
         cliente.nombre = binding.etNombre.text.trim().toString()
         cliente.apellidoPaterno = binding.etApellidoPaterno.text.trim().toString()
@@ -97,7 +102,7 @@ class RegistroClienteActivity : AppCompatActivity() {
             binding.etFechaNacimiento.error = "Campo obligatorio"
             isValido = true
         }else if(!Validador.esFechaNacimientoValida(binding.etFechaNacimiento.text.trim().toString())){
-            binding.etFechaNacimiento.error = "Fecha no valida, debe colocarse 'año-mes-dia'"
+            binding.etFechaNacimiento.error = "Fecha no valida"
             isValido = true
         }
         if(binding.etTelefono.text.isEmpty()){
@@ -117,7 +122,7 @@ class RegistroClienteActivity : AppCompatActivity() {
         if(binding.etpPassword.text.isEmpty()){
             binding.etpPassword.error = "Campo obligatorio"
             isValido = true
-        }else if(!Validador.esContrasenaValida(binding.etpPassword.text.trim().toString()) && binding.etpPassword.text.length < 8){
+        }else if(!Validador.esContrasenaValida(binding.etpPassword.text.trim().toString()) || binding.etpPassword.text.length < 8){
             binding.etpPassword.error = "Contraseña no valida, almenos 8 caracteres /o caracteres no permitidos"
             isValido = true
         }
@@ -151,6 +156,7 @@ class RegistroClienteActivity : AppCompatActivity() {
                     serializarRespuestaLogin(result)
                 }else{
                     Toast.makeText(this@RegistroClienteActivity, "Error en la peticion", Toast.LENGTH_SHORT).show()
+
                 }
             }
     }
@@ -160,18 +166,17 @@ class RegistroClienteActivity : AppCompatActivity() {
         val respuesta = gson.fromJson(json,Mensaje::class.java)
         if (!respuesta.error){
             Toast.makeText(this@RegistroClienteActivity, respuesta.mensaje, Toast.LENGTH_SHORT).show()
-            irPantallaHome(cliente)
+            irPantallaLogin()
         }else{
-            Toast.makeText(this@RegistroClienteActivity, respuesta.mensaje, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@RegistroClienteActivity, "Error al registrar la información", Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun irPantallaHome(cliente: Cliente){
-        val intent = Intent(this@RegistroClienteActivity,HomeActivity::class.java)
-        val gson = Gson()
-        var cadenaJson = gson.toJson(cliente)
-        intent.putExtra("cliente", cadenaJson)
+    fun irPantallaLogin(){
+        val intent = Intent(this@RegistroClienteActivity, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
+
 
 }

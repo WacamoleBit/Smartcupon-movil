@@ -36,18 +36,15 @@ class DetallePromocionActivity : AppCompatActivity() {
     }
 
     fun peticionObtenerLogoPromocion(idPromocion:Int){
-        Toast.makeText(this@DetallePromocionActivity, idPromocion.toString(), Toast.LENGTH_SHORT).show()
-
         Ion.with(this@DetallePromocionActivity)
             .load("GET", "${Constantes.URL_WS}promociones/obtenerLogoPorId/$idPromocion")
             .setHeader("Content-Type","application/json")
             .asString()
             .setCallback { e, result ->
                 if(e == null && result!= null){
-                    Toast.makeText(this@DetallePromocionActivity, result.toString(), Toast.LENGTH_SHORT).show()
                     mostrarLogo(result)
                 }else{
-                    Toast.makeText(this@DetallePromocionActivity, e.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetallePromocionActivity, "Error en la petición", Toast.LENGTH_SHORT).show()
                 }
             }
 

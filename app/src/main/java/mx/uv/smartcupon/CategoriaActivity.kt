@@ -16,8 +16,6 @@ import java.util.Locale
 class CategoriaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoriaBinding
     private lateinit var cliente:Cliente
-    private lateinit var promociones: ArrayList<Promocion>
-    private lateinit var listaBusqueda:ArrayList<Promocion>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoriaBinding.inflate(layoutInflater)

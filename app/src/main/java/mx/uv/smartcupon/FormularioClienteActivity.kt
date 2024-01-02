@@ -88,15 +88,15 @@ class FormularioClienteActivity : AppCompatActivity() {
         val gson = Gson()
         val respuesta = gson.fromJson(json, Mensaje::class.java)
         if (!respuesta.error){
-            Toast.makeText(this@FormularioClienteActivity, respuesta.mensaje, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@FormularioClienteActivity, "Información modificada con éxito", Toast.LENGTH_SHORT).show()
+            Log.d("TAG", respuesta.mensaje)
             val intent = Intent(this@FormularioClienteActivity, HomeActivity::class.java)
             var cadenaJson = gson.toJson(datosCliente.cliente)
             intent.putExtra("cliente", cadenaJson)
             startActivity(intent)
             finish()
         }else{
-            Toast.makeText(this@FormularioClienteActivity, respuesta.mensaje, Toast.LENGTH_SHORT).show()
-            Log.d("tag", respuesta.mensaje)
+            Toast.makeText(this@FormularioClienteActivity, "Error al modificar la información", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -181,8 +181,8 @@ class FormularioClienteActivity : AppCompatActivity() {
                     isValido = true
                 }
             }else{
-                binding.etpNuevoPassword.error = "La contraseñas no son iguales"
-                binding.etpVerificarPassword.error = "La contraseñas no son iguales"
+                binding.etpNuevoPassword.error = "Las contraseñas no son iguales"
+                binding.etpVerificarPassword.error = "Las contraseñas no son iguales"
                 isValido = true
             }
         }

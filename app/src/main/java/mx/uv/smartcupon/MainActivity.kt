@@ -16,13 +16,12 @@ import mx.uv.smartcupon.modelo.util.Validador
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var cliente:Cliente = Cliente()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        var cliente = Cliente()
 
         binding.btnIniciarSesion.setOnClickListener {
 
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     fun btnRegistrar(view: View): Unit{
         val irPantallaRegistrar = Intent(this@MainActivity, RegistroClienteActivity::class.java)
         startActivity(irPantallaRegistrar)
-        var mostrarMensaje = Toast.makeText(this, "Vamos a registrarte", Toast.LENGTH_LONG).show()
+        finish()
     }
 
     fun realizarPeticionLogin(cliente: Cliente) {

@@ -44,6 +44,8 @@ class CategoriaPromocionActivity : AppCompatActivity() {
             .setCallback { e, result ->
                 if (e == null && result!= null){
                     serializarInformacionPromocion(result)
+                }else{
+                    Toast.makeText(this@CategoriaPromocionActivity, "Error en la petición", Toast.LENGTH_SHORT).show()
                 }
             }
     }

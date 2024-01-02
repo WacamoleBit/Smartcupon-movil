@@ -38,6 +38,18 @@ class PromocionActivity : AppCompatActivity() {
             peticionObtenerPromociones()
         }
 
+        binding.svBuscarPromocion.clearFocus()
+        binding.svBuscarPromocion.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filtro(newText)
+                return true
+            }
+
+        })
 
         val botonNavegacionVista = binding.botonNavegacionVista
         botonNavegacionVista.selectedItemId = R.id.itm_boton_promociones
@@ -87,43 +99,21 @@ class PromocionActivity : AppCompatActivity() {
             }
         }
 
+    }
 
-        binding.svBuscarPromocion.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return true
+    private fun filtro(newText: String?) {
+        var listaBusquedaa: ArrayList<Promocion> = ArrayList()
+        for (promocion in promociones){
+            if(promocion.empresaNombre!!.toLowerCase().contains(newText!!.toLowerCase()) ||
+                promocion.fechaTermino!!.toLowerCase().contains(newText!!.toLowerCase())){
+                listaBusquedaa.add(promocion)
+                binding.tvDefault.visibility = View.GONE
+            }else{
+                binding.tvDefault.visibility = View.VISIBLE
             }
+        }
 
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                listaBusqueda.clear()
-                var cadenaBusqueda = p0!!.toLowerCase(Locale.getDefault())
-                if(cadenaBusqueda.isNotEmpty()){
-                        promociones.forEach {
-                            if(it.empresaNombre!!.toLowerCase(Locale.getDefault()).contains(cadenaBusqueda.trim())){
-                                listaBusqueda.add(it)
-                            }
-                            if(it.fechaTermino!!.toLowerCase(Locale.getDefault()).contains(cadenaBusqueda.trim())){
-                                listaBusqueda.add(it)
-                            }
-                        }
-                        binding.recyclerPromociones.adapter!!.notifyDataSetChanged()
-                        if (listaBusqueda == null || listaBusqueda.size<0){
-                            binding.tvDefault.visibility = View.VISIBLE
-                        }else{
-                            binding.tvDefault.visibility = View.GONE
-                        }
-                }else{
-                    listaBusqueda.clear()
-                    listaBusqueda.addAll(promociones)
-                    adaptador = PromocionesAdapter(listaBusqueda)
-                    mostrarInformacionPromociones(listaBusqueda)
-                    binding.recyclerPromociones.adapter!!.notifyDataSetChanged()
-                }
-                return false
-            }
-        })
-
-
+        adaptador.filtroLista(listaBusquedaa)
     }
 
     fun serializarCliente(cadenaJson: String) {
@@ -139,6 +129,8 @@ class PromocionActivity : AppCompatActivity() {
             .setCallback { e, result ->
                 if (e == null && result!= null){
                     serializarInformacionPromocion(result)
+                }else{
+                    Toast.makeText(this@PromocionActivity, "Error en la petición", Toast.LENGTH_SHORT).show()
                 }
             }
     }

@@ -1,5 +1,6 @@
 package mx.uv.smartcupon
 
+import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,10 @@ class PromocionesAdapter(var promocionesArrayList: ArrayList<Promocion>): Recycl
         }
     }
 
+    fun filtroLista(listaBusquedaa: ArrayList<Promocion>) {
+        promocionesArrayList = listaBusquedaa
+        notifyDataSetChanged()
+    }
 
     class ViewHolderPromociones(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvNombrePromocion: TextView = itemView.findViewById(R.id.tv_nombre)

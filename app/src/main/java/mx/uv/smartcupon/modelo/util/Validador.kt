@@ -1,12 +1,29 @@
 package mx.uv.smartcupon.modelo.util
 
+import android.util.Log
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
 object Validador {
     fun esNumero(texto: String): Boolean {
         return texto.toIntOrNull() != null
     }
     fun esFechaNacimientoValida(fecha: String): Boolean {
-        val regex = """^\d{4}-\d{2}-\d{2}$""".toRegex()
-        return regex.matches(fecha)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        dateFormat.isLenient = false
+        try {
+            val fechaNacimiento = dateFormat.parse(fecha)
+            val fechaActual = Calendar.getInstance().time
+
+            if (fechaNacimiento != null && fechaNacimiento.before(fechaActual)) {
+                return true
+            }
+        } catch (e: Exception) {
+            Log.d("TAG", e.message.toString())
+        }
+
+        return false
     }
     fun esCalleValida(calle: String): Boolean {
         val regex = """^[a-zA-Z0-9\s]+$""".toRegex()

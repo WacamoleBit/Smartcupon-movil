@@ -41,6 +41,8 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         binding.btnSalir.setOnClickListener {
+            val irPantallaLogin = Intent(this@PerfilActivity, MainActivity::class.java)
+            startActivity(irPantallaLogin)
             finish()
         }
 

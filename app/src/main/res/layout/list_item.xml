@@ -21,7 +21,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:id="@+id/siv_imagen"
-            android:src="@drawable/icons8_user_menu_male_60"
+            android:src="@drawable/icon_cupon"
             android:scaleType="centerCrop"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"

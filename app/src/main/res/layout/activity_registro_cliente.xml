@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,191 +14,240 @@
         android:layout_height="133dp"
         app:srcCompat="@drawable/erf" />
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
+        android:orientation="vertical"
+        >
+        <ImageButton
+            android:id="@+id/imgbt_regresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="Regresar"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:src="@drawable/icons8_back_50"
+            app:tint="@color/lavender" />
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_vista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="0dp"
-                android:gravity="center"
-                android:text="Registrate"
-                android:textColor="@color/lavender"
-                android:textSize="40dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/lavender"
-                android:text="Por favor introduce los datos para crear tu cuenta "
-                android:gravity="center"
-                android:layout_gravity="center_horizontal"/>
-
-            <EditText
-                android:id="@+id/et_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Nombre"
-                android:padding="10sp"
-                android:textColor="@color/black" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                >
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:text="Registrate"
+                    android:textColor="@color/lavender"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lavender"
+                    android:textSize="15dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Nombre completo"/>
 
                 <EditText
-                    android:id="@+id/et_apellido_paterno"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:id="@+id/et_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/custom_edittext"
                     android:drawablePadding="8dp"
-                    android:hint="Apellido Paterno"
+                    android:hint="Nombre"
+                    android:padding="10sp"
+                    android:textColor="@color/black" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    >
+
+                    <EditText
+                        android:id="@+id/et_apellido_paterno"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:hint="Apellido Paterno"
+                        android:padding="10sp"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/et_apellido_materno"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:hint="Apellido Materno"
+                        android:padding="10sp"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lavender"
+                    android:textSize="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Fecha de nacimiento"/>
+
+                <EditText
+
+                    android:id="@+id/et_fecha_nacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Año-mes-dia: 2001-12-20"
+                    android:padding="10sp"
+                    android:textColor="@color/black"
+                    android:inputType="date"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lavender"
+                    android:textSize="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Correo"/>
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="example@smartcupon.com"
+                    android:padding="10sp"
+                    android:textColor="@color/black"
+                    android:inputType="textEmailAddress"
+                    />
+
+                <EditText
+                    android:id="@+id/etp_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Contraseña"
+                    android:padding="10sp"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lavender"
+                    android:textSize="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Información de contacto"/>
+
+
+                <EditText
+                    android:id="@+id/et_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Número de teléfono"
+                    android:padding="10sp"
+                    android:textColor="@color/black"
+                    android:inputType="number"/>
+
+
+
+                <EditText
+                    android:id="@+id/et_calle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Calle"
                     android:padding="10sp"
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/et_apellido_materno"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:id="@+id/et_numero"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="20dp"
                     android:background="@drawable/custom_edittext"
                     android:drawablePadding="8dp"
-                    android:hint="Apellido Materno"
+                    android:hint="Numero"
                     android:padding="10sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:inputType="number"/>
 
             </LinearLayout>
 
-
-            <EditText
-                android:id="@+id/et_telefono"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Numero de telefono"
-                android:padding="10sp"
-                android:textColor="@color/black"
-                android:inputType="number"/>
-
-            <EditText
-
-                android:id="@+id/et_fecha_nacimiento"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Fecha de Nacimiento"
-                android:padding="10sp"
-                android:textColor="@color/black"
-                android:inputType="date"
-                />
-
-            <EditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Correo electronico"
-                android:padding="10sp"
-                android:textColor="@color/black"
-                android:inputType="textEmailAddress"
-                />
-
-            <EditText
-                android:id="@+id/etp_password"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Contraseña"
-                android:padding="10sp"
-                android:textColor="@color/black"
-                android:inputType="textPassword"/>
+        </androidx.cardview.widget.CardView>
 
 
-            <EditText
-                android:id="@+id/et_calle"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Calle"
-                android:padding="10sp"
-                android:textColor="@color/black" />
-
-            <EditText
-                android:id="@+id/et_numero"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:hint="Numero"
-                android:padding="10sp"
-                android:textColor="@color/black"
-                android:inputType="number"/>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btn_registrar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:gravity="center"
+            android:text="Registrar"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
 
-    <Button
-        android:id="@+id/btn_registrar"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:gravity="center"
-        android:text="Registrar"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/white" />
+    </LinearLayout>
 
 
 
 
-</LinearLayout>
+
+</RelativeLayout>
