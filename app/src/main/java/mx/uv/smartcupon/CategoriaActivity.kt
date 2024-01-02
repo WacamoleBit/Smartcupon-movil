@@ -79,68 +79,62 @@ class CategoriaActivity : AppCompatActivity() {
 
         binding.btnCine.setOnClickListener {
             val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
-            val categoria = binding.btnCine.text
-            intent.putExtra("categoria", categoria)
+            intent.putExtra("nombre", binding.btnCine.text.trim().toString())
+            intent.putExtra("categoria", 1)
             startActivity(intent)
         }
 
         binding.btnAerolinea.setOnClickListener {
             val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
-            val categoria = binding.btnAerolinea.text
-            intent.putExtra("categoria", categoria)
+            intent.putExtra("nombre", binding.btnAerolinea.text.trim().toString())
+            intent.putExtra("categoria", 7)
             startActivity(intent)
         }
 
         binding.btnCalzado.setOnClickListener {
             val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
-            val categoria = binding.btnCalzado.text
-            intent.putExtra("categoria", categoria)
+            intent.putExtra("nombre", binding.btnCalzado.text.trim().toString())
+            intent.putExtra("categoria", 6)
             startActivity(intent)
         }
 
         binding.btnRopa.setOnClickListener {
-
+            val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
+            intent.putExtra("nombre", binding.btnRopa.text.trim().toString())
+            intent.putExtra("categoria", 3)
+            startActivity(intent)
         }
 
         binding.btnComida.setOnClickListener {
             val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
-            val categoria = binding.btnComida.text
-            Toast.makeText(this@CategoriaActivity, categoria, Toast.LENGTH_SHORT).show()
-            intent.putExtra("categoria", categoria)
+            intent.putExtra("nombre", binding.btnComida.text.trim().toString())
+            intent.putExtra("categoria", 2)
             startActivity(intent)
         }
 
         binding.btnVideojuegos.setOnClickListener {
-
+            val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
+            intent.putExtra("nombre", binding.btnVideojuegos.text.trim().toString())
+            intent.putExtra("categoria", 5)
+            startActivity(intent)
         }
         binding.btnLimpieza.setOnClickListener {
-
+            val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
+            intent.putExtra("categoria", 4)
+            intent.putExtra("nombre", binding.btnLimpieza.text.trim().toString())
+            startActivity(intent)
         }
 
         binding.btnTecnologia.setOnClickListener {
-
+            val intent = Intent(this@CategoriaActivity, CategoriaPromocionActivity::class.java)
+            intent.putExtra("nombre", binding.btnTecnologia.text.trim().toString())
+            intent.putExtra("categoria", 8)
+            startActivity(intent)
         }
-    }
-
-    fun peticionObtenerPromociones(){
-        Ion.with(this@CategoriaActivity)
-            .load("GET", "${Constantes.URL_WS}promociones/obtenerPromociones")
-            .setHeader("Content-Type","application/json")
-            .asString()
-            .setCallback { e, result ->
-                if (e == null && result!= null){
-                    serializarInformacionPromocion(result)
-                }
-            }
     }
     private fun serializarCliente(cadenaJson: String) {
         val gson = Gson()
         cliente = gson.fromJson(cadenaJson, Cliente::class.java)
     }
 
-    fun serializarInformacionPromocion(result: String) {
-        val gson = Gson()
-        val typePromociones = object  : TypeToken<ArrayList<Promocion>>() {}.type
-        promociones = gson.fromJson(result, typePromociones)
-    }
 }

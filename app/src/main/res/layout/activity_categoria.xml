@@ -115,6 +115,7 @@
                 android:drawableTop="@drawable/icon_calzado"
                 android:gravity="center"
                 android:text="Calzado"
+                android:textSize="18dp"
                 />
 
 
@@ -149,7 +150,8 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/icon_videogames"
                 android:gravity="center"
-                android:text="Video Juegos" />
+                android:text="Video Juegos"
+                android:textSize="18dp"/>
 
             <Button
                 android:id="@+id/btn_tecnologia"
@@ -160,7 +162,9 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/icon_laptop"
                 android:gravity="center"
-                android:text="Tecnología" />
+                android:text="Tecnología"
+                android:textSize="18dp"
+                />
 
 
         </LinearLayout>

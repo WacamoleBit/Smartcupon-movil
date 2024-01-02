@@ -20,23 +20,25 @@ class CategoriaPromocionActivity : AppCompatActivity() {
     private var categorias: ArrayList<Promocion> = ArrayList()
     private var promociones: ArrayList<Promocion> = ArrayList()
     private lateinit var adaptador: PromocionesAdapter
-    private lateinit var categoria:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoriaPromocionBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        categoria = intent.getStringExtra("categoria").toString()
-        peticionObtenerPromociones()
+        var categoria = intent.getStringExtra("nombre")
+        binding.tvCategoria.text = categoria!!.trim().toString()
+
+        var idCategoria = intent.getIntExtra("categoria", -1)
+        peticionObtenerPromociones(idCategoria)
 
         binding.imgbtRegresar.setOnClickListener {
             finish()
         }
     }
-    fun peticionObtenerPromociones(){
+    fun peticionObtenerPromociones(idCategoria: Int){
         Ion.with(this@CategoriaPromocionActivity)
-            .load("GET", "${Constantes.URL_WS}promociones/obtenerPromociones")
+            .load("GET", "${Constantes.URL_WS}promociones/obtenerPromocionesPorCategoria/${idCategoria}")
             .setHeader("Content-Type","application/json")
             .asString()
             .setCallback { e, result ->
@@ -51,20 +53,6 @@ class CategoriaPromocionActivity : AppCompatActivity() {
         val gson = Gson()
         val typePromociones = object  : TypeToken<ArrayList<Promocion>>() {}.type
         promociones = gson.fromJson(result, typePromociones)
-        Toast.makeText(this@CategoriaPromocionActivity, promociones.size.toString(), Toast.LENGTH_SHORT).show()
-        /*
-        promociones.forEach{
-            if(it.categoriaNombre!!.toLowerCase(Locale.getDefault()).contains(categoria.trim())){
-                categorias.add(it)
-            }
-            if (categorias == null || categorias.size<0){
-                binding.tvDefault.visibility = View.VISIBLE
-            }else{
-                binding.tvDefault.visibility = View.GONE
-            }
-        }
-        */
-
         mostrarInformacionPromociones(promociones)
     }
 
