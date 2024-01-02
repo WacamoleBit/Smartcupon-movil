@@ -96,7 +96,6 @@ class PromocionActivity : AppCompatActivity() {
 
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 listaBusqueda.clear()
-                Toast.makeText(this@PromocionActivity, promociones.size.toString(), Toast.LENGTH_SHORT).show()
                 var cadenaBusqueda = p0!!.toLowerCase(Locale.getDefault())
                 if(cadenaBusqueda.isNotEmpty()){
                         promociones.forEach {

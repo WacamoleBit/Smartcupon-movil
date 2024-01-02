@@ -218,7 +218,7 @@ class FormularioClienteActivity : AppCompatActivity() {
 
         if(binding.etpNuevoPassword.text.isNotEmpty() || binding.etpVerificarPassword.text.isNotEmpty()){
             if (binding.etpNuevoPassword.text.trim().toString() == binding.etpVerificarPassword.text.trim().toString()){
-                if(binding.etpVerificarPassword.text.length > 8 && Validador.esContrasenaValida(binding.etpVerificarPassword.text.trim().toString())){
+                if(binding.etpVerificarPassword.text.length > 7 && Validador.esContrasenaValida(binding.etpVerificarPassword.text.trim().toString())){
                     datosClienteActualizados.cliente!!.password = binding.etpVerificarPassword.text.trim().toString()
                 }else{
                     binding.etpNuevoPassword.error = "La contraseña debe ser de 8 caracteres /o tipo de dato no valido"
