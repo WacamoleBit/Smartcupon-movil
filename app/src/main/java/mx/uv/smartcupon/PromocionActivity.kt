@@ -22,7 +22,6 @@ class PromocionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPromocionBinding
     private lateinit var cliente: Cliente
     private var promociones: ArrayList<Promocion> = ArrayList()
-    private var listaBusqueda: ArrayList<Promocion> = ArrayList()
     private lateinit var adaptador: PromocionesAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,18 +101,18 @@ class PromocionActivity : AppCompatActivity() {
     }
 
     private fun filtro(newText: String?) {
-        var listaBusquedaa: ArrayList<Promocion> = ArrayList()
+        var listaBusqueda: ArrayList<Promocion> = ArrayList()
         for (promocion in promociones){
             if(promocion.empresaNombre!!.toLowerCase().contains(newText!!.toLowerCase()) ||
                 promocion.fechaTermino!!.toLowerCase().contains(newText!!.toLowerCase())){
-                listaBusquedaa.add(promocion)
+                listaBusqueda.add(promocion)
                 binding.tvDefault.visibility = View.GONE
-            }else{
+            }else if(listaBusqueda.size<0){
                 binding.tvDefault.visibility = View.VISIBLE
             }
         }
 
-        adaptador.filtroLista(listaBusquedaa)
+        adaptador.filtroLista(listaBusqueda)
     }
 
     fun serializarCliente(cadenaJson: String) {
@@ -123,14 +122,14 @@ class PromocionActivity : AppCompatActivity() {
 
     fun peticionObtenerPromociones(){
         Ion.with(this@PromocionActivity)
-            .load("GET", "${Constantes.URL_WS}promociones/obtenerPromociones")
+            .load("GET", "${Constantes.URL_WS}promociones/obtenerPromocionesDisponibles")
             .setHeader("Content-Type","application/json")
             .asString()
             .setCallback { e, result ->
                 if (e == null && result!= null){
                     serializarInformacionPromocion(result)
                 }else{
-                    Toast.makeText(this@PromocionActivity, "Error en la petición", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PromocionActivity, "Error en la petición para obtener cupones", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -139,8 +138,7 @@ class PromocionActivity : AppCompatActivity() {
         val gson = Gson()
         val typePromociones = object  : TypeToken<ArrayList<Promocion>>() {}.type
         promociones = gson.fromJson(json, typePromociones)
-        listaBusqueda.addAll(promociones)
-        mostrarInformacionPromociones(listaBusqueda)
+        mostrarInformacionPromociones(promociones)
     }
 
     fun mostrarInformacionPromociones(listaBusqueda: ArrayList<Promocion>){

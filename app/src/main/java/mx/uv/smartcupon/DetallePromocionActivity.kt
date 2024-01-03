@@ -44,7 +44,7 @@ class DetallePromocionActivity : AppCompatActivity() {
                 if(e == null && result!= null){
                     mostrarLogo(result)
                 }else{
-                    Toast.makeText(this@DetallePromocionActivity, "Error en la petición", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetallePromocionActivity, "Error en la petición para obtener foto", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -63,6 +63,8 @@ class DetallePromocionActivity : AppCompatActivity() {
             val imgByte = Base64.decode(logo.imagenBase64, Base64.DEFAULT)
             val bitMapFoto = BitmapFactory.decodeByteArray(imgByte, 0, imgByte.size)
             binding.imgvPromocion.setImageBitmap(bitMapFoto)
+        }else{
+            Toast.makeText(this@DetallePromocionActivity, "El cupon no cuenta con fotografia", Toast.LENGTH_SHORT).show()
         }
     }
 

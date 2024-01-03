@@ -26,7 +26,7 @@ class PromocionesAdapter(var promocionesArrayList: ArrayList<Promocion>): Recycl
         holder.tvNombrePromocion.text = "Nombre: ${promocion!!.nombre.toString()}"
         holder.tvNombreEmpresa.text = "Empresa: ${promocion!!.empresaNombre.toString()}"
         holder.tvTipoDescuento.text = "Tipo: ${promocion!!.tipoPromocionNombre.toString()}"
-        holder.tvValor.text = "Valor: ${promocion!!.porcentajeDescuento.toString()}"
+        holder.tvValor.text = "Valor: ${promocion!!.porcentajeDescuento.toString()}%"
         holder.tvCupones.text = "Cupones: ${promocion!!.cuponesDisponibles.toString()}"
         holder.tvVigencia.text = "Vigencia: ${promocion!!.fechaTermino.toString()}"
 

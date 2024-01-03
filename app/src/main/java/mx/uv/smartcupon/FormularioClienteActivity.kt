@@ -229,6 +229,4 @@ class FormularioClienteActivity : AppCompatActivity() {
 
         peticionEditarCliente(datosClienteActualizados)
     }
-
-
 }
