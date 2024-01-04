@@ -46,7 +46,7 @@ class FormularioClienteActivity : AppCompatActivity() {
                 }
             }
             builder.setNegativeButton("Cancelar") { dialog, which ->
-                finish()
+                limpiarCampos()
             }
 
             val dialog: AlertDialog = builder.create()
@@ -67,6 +67,18 @@ class FormularioClienteActivity : AppCompatActivity() {
         binding.etTelefono.setText(datosCliente.cliente!!.telefono)
         binding.etNumero.setText(datosCliente.direccion!!.numero.toString())
         binding.etCalle.setText(datosCliente.direccion!!.calle)
+    }
+
+    fun limpiarCampos(){
+        binding.etNombre.setText("")
+        binding.etApellidoPaterno.setText("")
+        binding.etApellidoMaterno.setText("")
+        binding.etFechaNacimiento.setText("")
+        binding.etTelefono.setText("")
+        binding.etNumero.setText("")
+        binding.etCalle.setText("")
+        binding.etpNuevoPassword.setText("")
+        binding.etpVerificarPassword.setText("")
     }
 
     fun peticionEditarCliente(datosCliente: DatosCliente){

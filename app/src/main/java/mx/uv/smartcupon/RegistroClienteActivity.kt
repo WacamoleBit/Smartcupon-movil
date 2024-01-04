@@ -46,11 +46,23 @@ class RegistroClienteActivity : AppCompatActivity() {
                 }
             }
             builder.setNegativeButton("Cancelar") { dialog, which ->
-                finish()
+                limpiarCampos()
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
         }
+    }
+
+
+    fun limpiarCampos(){
+        binding.etNombre.setText("")
+        binding.etApellidoPaterno.setText("")
+        binding.etApellidoMaterno.setText("")
+        binding.etFechaNacimiento.setText("")
+        binding.etTelefono.setText("")
+        binding.etNumero.setText("")
+        binding.etCalle.setText("")
+        binding.etpPassword.setText("")
     }
 
     fun registraCliente(){
