@@ -42,7 +42,12 @@ object Validador {
         return regex.matches(numeroTelefono)
     }
     fun esCorreoElectronicoValido(correo: String): Boolean {
-        val regex = """^[a-zA-Z0-9._%+-]+@smartcupon\.com$""".toRegex()
+        val regex = """^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$""".toRegex()
         return regex.matches(correo)
+    }
+
+    fun esNombreValido(nombre: String): Boolean {
+        val regex = """^[a-zA-ZáéíóúüÁÉÍÓÚÜ]+(?: [a-zA-ZáéíóúüÁÉÍÓÚÜ]+)?$""".toRegex()
+        return regex.matches(nombre)
     }
 }

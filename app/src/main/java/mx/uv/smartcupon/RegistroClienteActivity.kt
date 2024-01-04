@@ -80,7 +80,7 @@ class RegistroClienteActivity : AppCompatActivity() {
         if(binding.etNombre.text.isEmpty()){
             binding.etNombre.error = "Campo obligatorio"
             isValido = true
-        }else if (!Validador.esCadenaValida(binding.etNombre.text.trim().toString())){
+        }else if (!Validador.esNombreValido(binding.etNombre.text.trim().toString())){
             binding.etNombre.error = "Nombre no valido"
             isValido = true
         }
@@ -165,7 +165,7 @@ class RegistroClienteActivity : AppCompatActivity() {
         val gson = Gson()
         val respuesta = gson.fromJson(json,Mensaje::class.java)
         if (!respuesta.error){
-            Toast.makeText(this@RegistroClienteActivity, respuesta.mensaje, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@RegistroClienteActivity, "Registro éxitoso", Toast.LENGTH_SHORT).show()
             irPantallaLogin()
         }else{
             Toast.makeText(this@RegistroClienteActivity, "Error al registrar la información", Toast.LENGTH_SHORT).show()

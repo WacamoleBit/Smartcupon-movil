@@ -89,7 +89,6 @@ class FormularioClienteActivity : AppCompatActivity() {
         val respuesta = gson.fromJson(json, Mensaje::class.java)
         if (!respuesta.error){
             Toast.makeText(this@FormularioClienteActivity, "Información modificada con éxito", Toast.LENGTH_SHORT).show()
-            Log.d("TAG", respuesta.mensaje)
             val intent = Intent(this@FormularioClienteActivity, HomeActivity::class.java)
             var cadenaJson = gson.toJson(datosCliente.cliente)
             intent.putExtra("cliente", cadenaJson)
@@ -112,7 +111,7 @@ class FormularioClienteActivity : AppCompatActivity() {
         if(binding.etNombre.text.isEmpty()){
             binding.etNombre.error = "Campo obligatorio"
             isValido = true
-        }else if (!Validador.esCadenaValida(binding.etNombre.text.trim().toString())){
+        }else if (!Validador.esNombreValido(binding.etNombre.text.trim().toString())){
             binding.etNombre.error = "Nombre no valido"
             isValido = true
         }
