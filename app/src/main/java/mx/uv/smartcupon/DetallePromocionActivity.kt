@@ -41,7 +41,7 @@ class DetallePromocionActivity : AppCompatActivity() {
             .setHeader("Content-Type","application/json")
             .asString()
             .setCallback { e, result ->
-                if(e == null && result!= null){
+                if(e == null && result!= null && result.isNotEmpty()){
                     mostrarLogo(result)
                 }else{
                     Toast.makeText(this@DetallePromocionActivity, "Error en la petición para obtener foto", Toast.LENGTH_SHORT).show()
