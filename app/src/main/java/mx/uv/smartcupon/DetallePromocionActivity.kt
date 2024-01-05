@@ -44,7 +44,7 @@ class DetallePromocionActivity : AppCompatActivity() {
                 if(e == null && result!= null && result.isNotEmpty()){
                     mostrarLogo(result)
                 }else{
-                    Toast.makeText(this@DetallePromocionActivity, "Error en la petición para obtener foto", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetallePromocionActivity, "La promoción no cuenta con fotografía", Toast.LENGTH_SHORT).show()
                 }
             }
 
